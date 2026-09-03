@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Home | San Diego Flight School</title>
+    <title>FAQs | San Diego Flight School</title>
     <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon/favicon-16x16.png">
@@ -15,22 +15,39 @@
         body {
             font-family: 'Poppins', sans-serif;
         }
+        
+        /* Modern FAQ Accordion Styling */
         .faq-item {
-            border-bottom: 1px solid #e2e8f0;
-            padding-bottom: 1rem;
-            margin-bottom: 1rem;
+            transition: all 0.3s ease;
         }
-        .faq-question {
-            cursor: pointer;
+        
+        .faq-icon {
+            transition: transform 0.3s ease;
         }
+        
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+        
+        .faq-item.active .faq-question-text {
+            color: #1e3a8a; /* blue-900 */
+        }
+
+        /* Modern CSS Grid trick for smooth auto-height transitions */
         .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
+            display: grid;
+            grid-template-rows: 0fr;
+            transition: grid-template-rows 0.3s ease-out, opacity 0.3s ease-out;
+            opacity: 0;
         }
+        
         .faq-item.active .faq-answer {
-            max-height: 1000px; /* large enough to show content */
-            margin-top: 0.5rem;
+            grid-template-rows: 1fr;
+            opacity: 1;
+        }
+        
+        .faq-answer-inner {
+            overflow: hidden;
         }
     </style>
 </head>
@@ -85,186 +102,343 @@
     </header>
 
     <!-- FAQ Section -->
-    <section class="py-16 bg-white">
+    <section class="py-20 bg-gray-50">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12 text-blue-900">Frequently Asked Questions</h2>
-            <div class="max-w-3xl mx-auto">
-               
-                <div class="faq-item">
-                    <h3 class="faq-question text-xl font-bold mb-2">What is the difference between training part 61 and part 141?</h3>
-                    <div class="faq-answer text-gray-600">
-                        <p><b>Part 141 training</b></p>
-                        <ul class="list-disc list-inside">
-                            <li>Specific training syllabus approved by the FAA.</li>
-                            <li>Very structured and regimented training course.</li>
-                            <li>Formal ground school with a specific amount of hours required.</li>
-                        </ul>
-                        <p><b>Pros:</b> A very structured training process in a classroom environment that may appeal to some students. To utilize military benefits along with Visa holders are required to train part 141.</p>
-                        <p><b>Cons:</b> The overall process is generally more expensive and takes longer. The lack of flexibility in the training process can lead to frustration.</p>
-                        <p><b>Part 61 training</b></p>
-                        <ul class="list-disc list-inside">
-                            <li>Custom tailored training approved by the FAA.</li>
-                            <li>Instructor and student work together to establish a schedule that fits the student's schedule and lifestyle.</li>
-                            <li>Home ground school can be supervised with no minimum hour requirement.</li>
-                        </ul>
-                        <p><b>Pros:</b> Custom tailored training to the individual student. Ground school can be done at home and supervised by the school and/or the instructor at a much lower cost. The overall training cost can be significantly lower.</p>
-                        <p><b>Cons:</b> Some students learn better in a vigorous structured environment, many part 61 training opportunities do not offer that, but some do.</p>
-                        <p><b>Note:</b> Keep in mind both a part 141 and part 61 student must pass the same FAA written exam, and must demonstrate the same knowledge and flight tasks to a check pilot or a designated pilot examiner (DPE) to achieve a pilot certificate or rating.</p>
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-blue-900 mb-4">Frequently Asked Questions</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto text-lg">Everything you need to know about starting your aviation journey with New Vision Aviation.</p>
+            </div>
+            
+            <div class="max-w-3xl mx-auto space-y-4">
+                
+                <!-- FAQ Item 1 -->
+                <div class="faq-item bg-white rounded-xl shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
+                    <button class="faq-question w-full text-left px-6 py-5 flex justify-between items-center focus:outline-none">
+                        <span class="faq-question-text text-lg font-semibold text-gray-800 transition-colors">What is the difference between training part 61 and part 141?</span>
+                        <i class="fas fa-chevron-down text-blue-600 faq-icon ml-4 flex-shrink-0"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner px-6 pb-6 text-gray-600 space-y-4 border-t border-gray-100 mt-2 pt-4">
+                            <div>
+                                <p class="font-bold text-gray-800 mb-2">Part 141 training</p>
+                                <ul class="list-disc pl-5 space-y-1 mb-3">
+                                    <li>Specific training syllabus approved by the FAA.</li>
+                                    <li>Very structured and regimented training course.</li>
+                                    <li>Formal ground school with a specific amount of hours required.</li>
+                                </ul>
+                                <p><span class="font-semibold text-green-700">Pros:</span> A very structured training process in a classroom environment that may appeal to some students. To utilize military benefits along with Visa holders are required to train part 141.</p>
+                                <p><span class="font-semibold text-red-700">Cons:</span> The overall process is generally more expensive and takes longer. The lack of flexibility in the training process can lead to frustration.</p>
+                            </div>
+                            <hr class="border-gray-200">
+                            <div>
+                                <p class="font-bold text-gray-800 mb-2">Part 61 training</p>
+                                <ul class="list-disc pl-5 space-y-1 mb-3">
+                                    <li>Custom tailored training approved by the FAA.</li>
+                                    <li>Instructor and student work together to establish a schedule that fits the student's schedule and lifestyle.</li>
+                                    <li>Home ground school can be supervised with no minimum hour requirement.</li>
+                                </ul>
+                                <p><span class="font-semibold text-green-700">Pros:</span> Custom tailored training to the individual student. Ground school can be done at home and supervised by the school and/or the instructor at a much lower cost. The overall training cost can be significantly lower.</p>
+                                <p><span class="font-semibold text-red-700">Cons:</span> Some students learn better in a vigorous structured environment, many part 61 training opportunities do not offer that, but some do.</p>
+                            </div>
+                            <div class="bg-blue-50 p-4 rounded-lg mt-4">
+                                <p class="text-sm text-blue-900"><b>Note:</b> Keep in mind both a part 141 and part 61 student must pass the same FAA written exam, and must demonstrate the same knowledge and flight tasks to a check pilot or a designated pilot examiner (DPE) to achieve a pilot certificate or rating.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="faq-item">
-                    <h3 class="faq-question text-xl font-bold mb-2">What is the difference between flight schools and flight clubs?</h3>
-                    <div class="faq-answer text-gray-600">
-                        <p><b>Flight Schools</b></p>
-                        <ul class="list-disc list-inside">
-                            <li>Structured organization, environment and meeting place.</li>
-                            <li>Instructor is assigned by the school.</li>
-                            <li>Increased overhead and organizational cost.</li>
-                            <li>Training options may be limited due to school policy and rules.</li>
-                        </ul>
-                        <p><b>Flight Clubs</b></p>
-                        <ul class="list-disc list-inside">
-                            <li>More flexibility, freedom in training times and locations.</li>
-                            <li>You choose your instructor based on personality and comfort level.</li>
-                            <li>Instructors are independent contractors with no overhead and little expenses.</li>
-                            <li>Custom training tailored to the individual student.</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <h3 class="faq-question text-xl font-bold mb-2">What are the requirements to obtain a private pilot certificate?</h3>
-                    <div class="faq-answer text-gray-600">
-                        <p><b>Private Pilot Requirements</b></p>
-                        <ul class="list-disc list-inside">
-                            <li>Must be at least 17 years of age (16 to solo).</li>
-                            <li>Obtain a 3rd class medical/student pilot certificate from an approved Aviation Medical Examiner (AME).</li>
-                            <li>Proof of US citizenship or other approved status.</li>
-                            <li>A Minimum of 40 flight hours completing the specific flight requirements (national average is 71).</li>
-                            <li>Pass the FAA written exam.</li>
-                            <li>Pass a practical exam with a Designated Pilot Examiner (DPE).</li>
-                        </ul>
+                <!-- FAQ Item 2 -->
+                <div class="faq-item bg-white rounded-xl shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
+                    <button class="faq-question w-full text-left px-6 py-5 flex justify-between items-center focus:outline-none">
+                        <span class="faq-question-text text-lg font-semibold text-gray-800 transition-colors">What is the difference between flight schools and flight clubs?</span>
+                        <i class="fas fa-chevron-down text-blue-600 faq-icon ml-4 flex-shrink-0"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner px-6 pb-6 text-gray-600 space-y-4 border-t border-gray-100 mt-2 pt-4">
+                            <div>
+                                <p class="font-bold text-gray-800 mb-2">Flight Schools</p>
+                                <ul class="list-disc pl-5 space-y-1 mb-4">
+                                    <li>Structured organization, environment and meeting place.</li>
+                                    <li>Instructor is assigned by the school.</li>
+                                    <li>Increased overhead and organizational cost.</li>
+                                    <li>Training options may be limited due to school policy and rules.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <p class="font-bold text-gray-800 mb-2">Flight Clubs</p>
+                                <ul class="list-disc pl-5 space-y-1">
+                                    <li>More flexibility, freedom in training times and locations.</li>
+                                    <li>You choose your instructor based on personality and comfort level.</li>
+                                    <li>Instructors are independent contractors with no overhead and little expenses.</li>
+                                    <li>Custom training tailored to the individual student.</li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="faq-item">
-                    <h3 class="faq-question text-xl font-bold mb-2">I wear glasses or I am color blind can I become a private pilot and eventually a commercial pilot?</h3>
-                    <div class="faq-answer text-gray-600">
-                        <p>Yes, as long as your vision can be corrected with glasses you should have no problems. If you are color blind additional tests will be required, the private pilot certificate and a career in the airlines is still possible. This serves as a good reminder to get your medical completed prior to any flight training.</p>
+                <!-- FAQ Item 3 -->
+                <div class="faq-item bg-white rounded-xl shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
+                    <button class="faq-question w-full text-left px-6 py-5 flex justify-between items-center focus:outline-none">
+                        <span class="faq-question-text text-lg font-semibold text-gray-800 transition-colors">What are the requirements to obtain a private pilot certificate?</span>
+                        <i class="fas fa-chevron-down text-blue-600 faq-icon ml-4 flex-shrink-0"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner px-6 pb-6 text-gray-600 border-t border-gray-100 mt-2 pt-4">
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li>Must be at least 17 years of age (16 to solo).</li>
+                                <li>Obtain a 3rd class medical/student pilot certificate from an approved Aviation Medical Examiner (AME).</li>
+                                <li>Proof of US citizenship or other approved status.</li>
+                                <li>A Minimum of 40 flight hours completing the specific flight requirements (national average is 71).</li>
+                                <li>Pass the FAA written exam.</li>
+                                <li>Pass a practical exam with a Designated Pilot Examiner (DPE).</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
 
-                <div class="faq-item">
-                    <h3 class="faq-question text-xl font-bold mb-2">How much will it cost me to get my Private Pilot Certificate?</h3>
-                    <div class="faq-answer text-gray-600">
-                        <p>That is a great question, but difficult to answer. The minimum number of flight hours to get your private pilot certificate is 40 hours. However, the national average is 71 hours. Variables such as how frequently you train (2-3 times per week is recommended), how hard you study at home, and individual skill greatly impact the final cost. <br /><b>*BEWARE</b> of anybody quoting an exact price to complete your private pilot certificate. <br />Call us today for current quotes for both airplanes and instructional rates.<b> Free consultations available</b></p>
+                <!-- FAQ Item 4 -->
+                <div class="faq-item bg-white rounded-xl shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
+                    <button class="faq-question w-full text-left px-6 py-5 flex justify-between items-center focus:outline-none">
+                        <span class="faq-question-text text-lg font-semibold text-gray-800 transition-colors">I wear glasses or I am color blind, can I become a private pilot?</span>
+                        <i class="fas fa-chevron-down text-blue-600 faq-icon ml-4 flex-shrink-0"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner px-6 pb-6 text-gray-600 border-t border-gray-100 mt-2 pt-4 leading-relaxed">
+                            <p>Yes, as long as your vision can be corrected with glasses you should have no problems. If you are color blind additional tests will be required, but the private pilot certificate and a career in the airlines is still possible. This serves as a good reminder to get your medical completed prior to any flight training.</p>
+                        </div>
                     </div>
                 </div>
 
-                <div class="faq-item">
-                    <h3 class="faq-question text-xl font-bold mb-2">Do I need a 3rd class medical certificate/student pilot certificate to become a private pilot? What are they?</h3>
-                    <div class="faq-answer text-gray-600">
-                        <p>Yes. A 3rd class medical is issued by an Aviation Medical Examiner (AME), see the link below to find a doctor in your area. The purpose of the 3rd class medical is to determine if you are in good enough health to pilot an airplane. This medical certificate also serves as your student pilot certificate. <br /><b>Before you leave the doctor's office verify EVERYTHING is EXACTLY matching your government issued ID 100%. Any discrepancy will cause undue delays when taking the final flight check.</b><br />This medical certificate must remain valid anytime you are acting as pilot in command (PIC). This means you are the "sole" manipulator of the flight controls. 1st and 2nd class medical certificates may also be required, call for assistance. <br /><i><b>Note:</b> You can start your flight training prior to getting your 3rd class medical certificate. However, you cannot solo until you have your medical certificate.</i><br /><a href="https://www.faa.gov/pilots/amelocator/" target="_blank">Find a Doctor nearby</a></p>
+                <!-- FAQ Item 5 -->
+                <div class="faq-item bg-white rounded-xl shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
+                    <button class="faq-question w-full text-left px-6 py-5 flex justify-between items-center focus:outline-none">
+                        <span class="faq-question-text text-lg font-semibold text-gray-800 transition-colors">How much will it cost me to get my Private Pilot Certificate?</span>
+                        <i class="fas fa-chevron-down text-blue-600 faq-icon ml-4 flex-shrink-0"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner px-6 pb-6 text-gray-600 space-y-3 border-t border-gray-100 mt-2 pt-4 leading-relaxed">
+                            <p>That is a great question, but difficult to answer. The minimum number of flight hours to get your private pilot certificate is 40 hours. However, the national average is 71 hours.</p>
+                            <p>Variables such as how frequently you train (2-3 times per week is recommended), how hard you study at home, and individual skill greatly impact the final cost.</p>
+                            <div class="bg-red-50 p-3 rounded-lg border border-red-100 my-2">
+                                <p class="text-red-800 text-sm"><i class="fas fa-exclamation-triangle mr-2"></i><b>BEWARE</b> of anybody quoting an exact price to complete your private pilot certificate.</p>
+                            </div>
+                            <p class="font-medium text-blue-700">Call us today for current quotes for both airplanes and instructional rates. Free consultations available.</p>
+                        </div>
                     </div>
                 </div>
 
-                <div class="faq-item">
-                    <h3 class="faq-question text-xl font-bold mb-2">How do I choose my flight instructor?</h3>
-                    <div class="faq-answer text-gray-600">
-                        <p>We advise that you interview multiple instructors and perhaps even fly with a few to determine the best fit for your personality. Remember you are interviewing to hire this person to provide adequate training and to keep you safe as you learn.<br /><b>Questions to ask:</b></p>
-                        <ul class="list-disc list-inside text-gray-600">
-                            <li>What is your current pass rate?</li>
-                            <li>What is your rate?</li>
-                            <li>What is your availability and do you anticipate being able to complete my training?</li>
-                            <li>Do you train with a syllabus?</li>
-                            <li>How do you handle the ground portion of the training?</li>
-                        </ul>
+                <!-- FAQ Item 6 -->
+                <div class="faq-item bg-white rounded-xl shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
+                    <button class="faq-question w-full text-left px-6 py-5 flex justify-between items-center focus:outline-none">
+                        <span class="faq-question-text text-lg font-semibold text-gray-800 transition-colors">Do I need a 3rd class medical certificate/student pilot certificate?</span>
+                        <i class="fas fa-chevron-down text-blue-600 faq-icon ml-4 flex-shrink-0"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner px-6 pb-6 text-gray-600 space-y-3 border-t border-gray-100 mt-2 pt-4 leading-relaxed">
+                            <p>Yes. A 3rd class medical is issued by an Aviation Medical Examiner (AME). The purpose of the 3rd class medical is to determine if you are in good enough health to pilot an airplane. This medical certificate also serves as your student pilot certificate.</p>
+                            <p class="font-semibold text-gray-900">Before you leave the doctor's office verify EVERYTHING is EXACTLY matching your government issued ID 100%. Any discrepancy will cause undue delays when taking the final flight check.</p>
+                            <p>This medical certificate must remain valid anytime you are acting as pilot in command (PIC). This means you are the "sole" manipulator of the flight controls. 1st and 2nd class medical certificates may also be required, call for assistance.</p>
+                            <p class="text-sm italic text-gray-500">Note: You can start your flight training prior to getting your 3rd class medical certificate. However, you cannot solo until you have your medical certificate.</p>
+                            <a href="https://www.faa.gov/pilots/amelocator/" target="_blank" class="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium mt-2">
+                                Find a Doctor nearby <i class="fas fa-external-link-alt ml-2 text-sm"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
-                <div class="faq-item">
-                    <h3 class="faq-question text-xl font-bold mb-2">What if I'm not a United States citizen, can I train at New Vision Aviation?</h3>
-                    <div class="faq-answer text-gray-600">
-                        <p>In order to train Part 61 in the United States you must hold a US Passport or hold legal residence in the United States. If you are in the United States specifically for Flight Training only utilizing an F or M Visas you must utilize a 141 school. <b>New Vision Aviation is an approved part 61 school and is able to participate in the Alien Flight Student Program for qualified students.</b> Below are some helpful links. Please call for additional information.<br /><a href="https://www.aopa.org/advocacy/pilots/alien-flight-training-program/aliens-and-non-us-citizens-seeking-flight-training/" target="_blank">AOPA guide to the AFSP program</a><br /><a href="https://www.flightschoolcandidates.gov/home/dod" target="_blank">Apply to the AFSP program</a></p>
+                <!-- FAQ Item 7 -->
+                <div class="faq-item bg-white rounded-xl shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
+                    <button class="faq-question w-full text-left px-6 py-5 flex justify-between items-center focus:outline-none">
+                        <span class="faq-question-text text-lg font-semibold text-gray-800 transition-colors">How do I choose my flight instructor?</span>
+                        <i class="fas fa-chevron-down text-blue-600 faq-icon ml-4 flex-shrink-0"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner px-6 pb-6 text-gray-600 space-y-3 border-t border-gray-100 mt-2 pt-4 leading-relaxed">
+                            <p>We advise that you interview multiple instructors and perhaps even fly with a few to determine the best fit for your personality. Remember you are interviewing to hire this person to provide adequate training and to keep you safe as you learn.</p>
+                            <p class="font-bold text-gray-800">Questions to ask:</p>
+                            <ul class="list-disc pl-5 space-y-1">
+                                <li>What is your current pass rate?</li>
+                                <li>What is your rate?</li>
+                                <li>What is your availability and do you anticipate being able to complete my training?</li>
+                                <li>Do you train with a syllabus?</li>
+                                <li>How do you handle the ground portion of the training?</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
 
-                <div class="faq-item">
-                    <h3 class="faq-question text-xl font-bold mb-2">Do you offer financing?</h3>
-                    <div class="faq-answer text-gray-600">
-                        <p>Yes we offer financing. We are affiliated with a company that can finance a certificate or rating. Please call us today for an application and discuss the finance options available.</p>
+                <!-- FAQ Item 8 -->
+                <div class="faq-item bg-white rounded-xl shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
+                    <button class="faq-question w-full text-left px-6 py-5 flex justify-between items-center focus:outline-none">
+                        <span class="faq-question-text text-lg font-semibold text-gray-800 transition-colors">What if I'm not a United States citizen?</span>
+                        <i class="fas fa-chevron-down text-blue-600 faq-icon ml-4 flex-shrink-0"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner px-6 pb-6 text-gray-600 space-y-4 border-t border-gray-100 mt-2 pt-4 leading-relaxed">
+                            <p>In order to train Part 61 in the United States you must hold a US Passport or hold legal residence in the United States. If you are in the United States specifically for Flight Training only utilizing an F or M Visas you must utilize a 141 school.</p>
+                            <p class="font-medium text-gray-900 bg-gray-100 p-3 rounded-lg border border-gray-200">New Vision Aviation is an approved part 61 school and is able to participate in the Alien Flight Student Program for qualified students.</p>
+                            <div class="flex flex-col space-y-2">
+                                <a href="https://www.aopa.org/advocacy/pilots/alien-flight-training-program/aliens-and-non-us-citizens-seeking-flight-training/" target="_blank" class="text-blue-600 hover:text-blue-800 flex items-center">
+                                    <i class="fas fa-file-alt w-5"></i> AOPA guide to the AFSP program
+                                </a>
+                                <a href="https://www.fts.tsa.dhs.gov/home" target="_blank" class="text-blue-600 hover:text-blue-800 flex items-center">
+                                    <i class="fas fa-external-link-square-alt w-5"></i> Apply to the AFSP program
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="faq-item">
-                    <h3 class="faq-question text-xl font-bold mb-2">What airports do you currently operate out of?</h3>
-                    <div class="faq-answer text-gray-600">
-                        <p>We currently operate out of 3 airports in the San Diego area. Our primary training location is at the Montgomery Field Airport KMYF. We also operate out of the Gillespie Field Airport KSEE, and Palomar or Carlsbad Airport KCRQ.</p>
+                <!-- FAQ Item 9 -->
+                <div class="faq-item bg-white rounded-xl shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
+                    <button class="faq-question w-full text-left px-6 py-5 flex justify-between items-center focus:outline-none">
+                        <span class="faq-question-text text-lg font-semibold text-gray-800 transition-colors">Do you offer financing?</span>
+                        <i class="fas fa-chevron-down text-blue-600 faq-icon ml-4 flex-shrink-0"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner px-6 pb-6 text-gray-600 border-t border-gray-100 mt-2 pt-4 leading-relaxed">
+                            <p>While we don't currently have financing plans available, making pilot training accessible is a major priority for us. We are working behind the scenes to partner with trusted lenders to bring you flexible financing options soon. Until those programs launch, our pay-as-you-go approach allows you to fund your training at your own pace, paying only for the lessons and flight time you book without taking on an immediate, large-scale loan.</p>
+                        </div>
                     </div>
                 </div>
 
-                <div class="faq-item">
-                    <h3 class="faq-question text-xl font-bold mb-2">Do you offer introductory flights or discovery flights?</h3>
-                    <div class="faq-answer text-gray-600">
-                        <p>Yes we offer a flat rate for you and a friend to fly locally around San Diego for approximately 45 minutes. You will get the opportunity to fly the airplane and see San Diego from the air! Call for details and prices.</p>
+                <!-- FAQ Item 10 -->
+                <div class="faq-item bg-white rounded-xl shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
+                    <button class="faq-question w-full text-left px-6 py-5 flex justify-between items-center focus:outline-none">
+                        <span class="faq-question-text text-lg font-semibold text-gray-800 transition-colors">What airports do you currently operate out of?</span>
+                        <i class="fas fa-chevron-down text-blue-600 faq-icon ml-4 flex-shrink-0"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner px-6 pb-6 text-gray-600 border-t border-gray-100 mt-2 pt-4 leading-relaxed">
+                            <p>We currently operate out of 3 airports in the San Diego area. Our primary training location is at the <b>Montgomery Field Airport KMYF</b>. We also operate out of the <b>Gillespie Field Airport KSEE</b>, and <b>Mc Clellan - Palomar Airport KCRQ</b>.</p>
+                        </div>
                     </div>
                 </div>
 
-                <div class="faq-item">
-                    <h3 class="faq-question text-xl font-bold mb-2">What is the difference between a certificate and a rating? What is an endorsement?</h3>
-                    <div class="faq-answer text-gray-600">
-                        <p>A certificate is a private pilot, commercial or ATP license. A rating gives you additional privileges, such as an instrument rating added to an existing certificate. Endorsements allows you to fly complex, high performance, and tail wheel airplanes. All requiring additional training.</p>
+                <!-- FAQ Item 11 -->
+                <div class="faq-item bg-white rounded-xl shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
+                    <button class="faq-question w-full text-left px-6 py-5 flex justify-between items-center focus:outline-none">
+                        <span class="faq-question-text text-lg font-semibold text-gray-800 transition-colors">Do you offer introductory flights or discovery flights?</span>
+                        <i class="fas fa-chevron-down text-blue-600 faq-icon ml-4 flex-shrink-0"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner px-6 pb-6 text-gray-600 border-t border-gray-100 mt-2 pt-4 leading-relaxed">
+                            <p>Yes we offer a flat rate for you and a friend to fly locally around San Diego for approximately 45 minutes. You will get the opportunity to fly the airplane and see San Diego from the air! Call for details and prices.<b>*MUST BE PART OF PLUS ONE FLYERS*</b></p>
+                        </div>
                     </div>
                 </div>
 
-                <div class="faq-item">
-                    <h3 class="faq-question text-xl font-bold mb-2">Does New vision Aviation offer part 141 flight training?</h3>
-                    <div class="faq-answer text-gray-600">
-                        <p>No. Due to the stringent policies of the FAA we are unable to offer training under part 141. Our part 61 training is flexible and structured to be suited to the individual student, and can be as structured in the style as part 141 if the student desires.</p>
+                <!-- FAQ Item 12 -->
+                <div class="faq-item bg-white rounded-xl shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
+                    <button class="faq-question w-full text-left px-6 py-5 flex justify-between items-center focus:outline-none">
+                        <span class="faq-question-text text-lg font-semibold text-gray-800 transition-colors">What is the difference between a certificate, rating, and endorsement?</span>
+                        <i class="fas fa-chevron-down text-blue-600 faq-icon ml-4 flex-shrink-0"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner px-6 pb-6 text-gray-600 border-t border-gray-100 mt-2 pt-4 leading-relaxed">
+                            <p>A <b>certificate</b> is a private pilot, commercial or ATP license. A <b>rating</b> gives you additional privileges, such as an instrument rating added to an existing certificate. <b>Endorsements</b> allow you to fly complex, high performance, and tail wheel airplanes. All require additional training.</p>
+                        </div>
                     </div>
                 </div>
 
-                <div class="faq-item">
-                    <h3 class="faq-question text-xl font-bold mb-2">How does New Vision Aviation conduct the ground portion of my training?</h3>
-                    <div class="faq-answer text-gray-600">
-                        <p>Operating part 61 gives us tremendous freedom and flexibility. We believe in a custom tailored approach understanding some students learn better with videos, books or one-on-one. No matter what method you use your ground knowledge will be evaluated throughout the training process and before your final flight check.</p>
+                <!-- FAQ Item 13 -->
+                <div class="faq-item bg-white rounded-xl shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
+                    <button class="faq-question w-full text-left px-6 py-5 flex justify-between items-center focus:outline-none">
+                        <span class="faq-question-text text-lg font-semibold text-gray-800 transition-colors">Does New Vision Aviation offer part 141 flight training?</span>
+                        <i class="fas fa-chevron-down text-blue-600 faq-icon ml-4 flex-shrink-0"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner px-6 pb-6 text-gray-600 border-t border-gray-100 mt-2 pt-4 leading-relaxed">
+                            <p>No. Due to the stringent policies of the FAA we are unable to offer training under part 141. Our part 61 training is flexible and structured to be suited to the individual student, and can be as structured in the style as part 141 if the student desires.</p>
+                        </div>
                     </div>
                 </div>
 
-                <div class="faq-item">
-                    <h3 class="faq-question text-xl font-bold mb-2">Can you finish up my training if I started somewhere else or a long time ago?</h3>
-                    <div class="faq-answer text-gray-600">
-                        <p>Absolutely! We will develop a plan to get you completed in a timely manner. Your flight hours never expire. However, you must be able to demonstrate the knowledge and flying tasks required for your given certificate or rating.</p>
+                <!-- FAQ Item 14 -->
+                <div class="faq-item bg-white rounded-xl shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
+                    <button class="faq-question w-full text-left px-6 py-5 flex justify-between items-center focus:outline-none">
+                        <span class="faq-question-text text-lg font-semibold text-gray-800 transition-colors">How does New Vision Aviation conduct the ground portion of my training?</span>
+                        <i class="fas fa-chevron-down text-blue-600 faq-icon ml-4 flex-shrink-0"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner px-6 pb-6 text-gray-600 border-t border-gray-100 mt-2 pt-4 leading-relaxed">
+                            <p>Operating part 61 gives us tremendous freedom and flexibility. We believe in a custom tailored approach understanding some students learn better with videos, books or one-on-one. No matter what method you use your ground knowledge will be evaluated throughout the training process and before your final flight check.</p>
+                        </div>
                     </div>
                 </div>
 
-                <div class="faq-item">
-                    <h3 class="faq-question text-xl font-bold mb-2">Can family and friends join me during my flight lessons?</h3>
-                    <div class="faq-answer text-gray-600">
-                        <p>Yes. Friends and family are able and encouraged to join you at no additional cost (headsets not provided). However, some flight lessons have specific passenger limitations, please ask your instructor.</p>
+                <!-- FAQ Item 15 -->
+                <div class="faq-item bg-white rounded-xl shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
+                    <button class="faq-question w-full text-left px-6 py-5 flex justify-between items-center focus:outline-none">
+                        <span class="faq-question-text text-lg font-semibold text-gray-800 transition-colors">Can you finish up my training if I started somewhere else or a long time ago?</span>
+                        <i class="fas fa-chevron-down text-blue-600 faq-icon ml-4 flex-shrink-0"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner px-6 pb-6 text-gray-600 border-t border-gray-100 mt-2 pt-4 leading-relaxed">
+                            <p>Absolutely! We will develop a plan to get you completed in a timely manner. Your flight hours never expire. However, you must be able to demonstrate the knowledge and flying tasks required for your given certificate or rating.</p>
+                        </div>
                     </div>
                 </div>
 
-                <div class="faq-item">
-                    <h3 class="faq-question text-xl font-bold mb-2">Do I have to join a flight club to train at New Vision Aviation?</h3>
-                    <div class="faq-answer text-gray-600">
-                        <p>Membership with Plus One Flyers is required. They provide an excellent and very reasonably priced fleet of aircraft. The cost to join is $199 plus $39.50 for the first month then $39.50 thereafter. The club currently has many training airplanes starting around $100.00 per hour.<br /><b>Prices are not guaranteed by New Vision Aviation, LLC. Please call for updated prices.</b><br /><a href="https://www.PlusOneFlyers.org/" target="_blank">Plus One Flyers</a></p>
+                <!-- FAQ Item 16 -->
+                <div class="faq-item bg-white rounded-xl shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
+                    <button class="faq-question w-full text-left px-6 py-5 flex justify-between items-center focus:outline-none">
+                        <span class="faq-question-text text-lg font-semibold text-gray-800 transition-colors">Can family and friends join me during my flight lessons?</span>
+                        <i class="fas fa-chevron-down text-blue-600 faq-icon ml-4 flex-shrink-0"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner px-6 pb-6 text-gray-600 border-t border-gray-100 mt-2 pt-4 leading-relaxed">
+                            <p>Yes. Friends and family are able and encouraged to join you at no additional cost (headsets not provided). However, some flight lessons have specific passenger limitations, please ask your instructor.</p>
+                        </div>
                     </div>
                 </div>
 
-                <div class="faq-item">
-                    <h3 class="faq-question text-xl font-bold mb-2">Do you offer refresher training?</h3>
-                    <div class="faq-answer text-gray-600">
-                        <p>Yes. For all levels of flying we offer refresher training specific to the needs of the individual pilot.</p>
+                <!-- FAQ Item 17 -->
+                <div class="faq-item bg-white rounded-xl shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
+                    <button class="faq-question w-full text-left px-6 py-5 flex justify-between items-center focus:outline-none">
+                        <span class="faq-question-text text-lg font-semibold text-gray-800 transition-colors">Do I have to join a flight club to train at New Vision Aviation?</span>
+                        <i class="fas fa-chevron-down text-blue-600 faq-icon ml-4 flex-shrink-0"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner px-6 pb-6 text-gray-600 space-y-3 border-t border-gray-100 mt-2 pt-4 leading-relaxed">
+                            <p>Membership with Plus One Flyers is required. They provide an excellent and very reasonably priced fleet of aircraft. The cost to join is $199 plus $39.50 for the first month then $39.50 thereafter.</p>
+                            <p class="text-sm italic text-gray-500">Prices are not guaranteed by New Vision Aviation, LLC. Please call for updated prices.</p>
+                            <a href="https://www.PlusOneFlyers.org/" target="_blank" class="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium">
+                                Visit Plus One Flyers <i class="fas fa-external-link-alt ml-2 text-sm"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
-                <div class="faq-item">
-                    <h3 class="faq-question text-xl font-bold mb-2">Do you offer ForeFlight training?</h3>
-                    <div class="faq-answer text-gray-600">
-                        <p>We do offer ForeFlight training and we encourage anybody that has achieved a private pilot certificate to become familiar with this technology. We can help you gain confidence in using your paid subscription to its fullest in a safe controlled environment on the ground. When used correctly it adds a tremendous amount of situational awareness to any flight. <br /><b>Contact us today for information on private and group lessons.</b></p>
+                <!-- FAQ Item 18 -->
+                <div class="faq-item bg-white rounded-xl shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
+                    <button class="faq-question w-full text-left px-6 py-5 flex justify-between items-center focus:outline-none">
+                        <span class="faq-question-text text-lg font-semibold text-gray-800 transition-colors">Do you offer refresher training?</span>
+                        <i class="fas fa-chevron-down text-blue-600 faq-icon ml-4 flex-shrink-0"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner px-6 pb-6 text-gray-600 border-t border-gray-100 mt-2 pt-4 leading-relaxed">
+                            <p>Yes. For all levels of flying we offer refresher training specific to the needs of the individual pilot.</p>
+                        </div>
                     </div>
                 </div>
+
+                <!-- FAQ Item 19 -->
+                <div class="faq-item bg-white rounded-xl shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
+                    <button class="faq-question w-full text-left px-6 py-5 flex justify-between items-center focus:outline-none">
+                        <span class="faq-question-text text-lg font-semibold text-gray-800 transition-colors">Do you offer ForeFlight training?</span>
+                        <i class="fas fa-chevron-down text-blue-600 faq-icon ml-4 flex-shrink-0"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner px-6 pb-6 text-gray-600 space-y-3 border-t border-gray-100 mt-2 pt-4 leading-relaxed">
+                            <p>We do offer ForeFlight training and we encourage anybody that has achieved a private pilot certificate to become familiar with this technology. We can help you gain confidence in using your paid subscription to its fullest in a safe controlled environment on the ground.</p>
+                            <p>When used correctly it adds a tremendous amount of situational awareness to any flight.</p>
+                            <p class="font-medium text-blue-700">Contact us today for information on private and group lessons.</p>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
@@ -317,39 +491,53 @@
 
     <script>
         /**
- * New Vision Aviation - Universal Mobile Menu Logic
- * Handles toggling, scroll-to-close, and click-outside interactions.
- */
+         * New Vision Aviation - Universal Mobile Menu Logic
+         */
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
 
-// Toggle Mobile Menu
-function toggleMobileMenu() {
-    const menu = document.getElementById('mobile-menu');
-    menu.classList.toggle('hidden');
-}
+        window.addEventListener('scroll', () => {
+            const menu = document.getElementById('mobile-menu');
+            if (menu && !menu.classList.contains('hidden')) {
+                menu.classList.add('hidden');
+            }
+        });
 
-// Close Mobile Menu on Scroll (App-like behavior)
-window.addEventListener('scroll', () => {
-    const menu = document.getElementById('mobile-menu');
-    if (menu && !menu.classList.contains('hidden')) {
-        menu.classList.add('hidden');
-    }
-});
+        document.addEventListener('click', (event) => {
+            const menu = document.getElementById('mobile-menu');
+            const menuBtn = document.getElementById('mobile-menu-btn');
+            
+            if (!menu || !menuBtn) return;
 
-// Close Mobile Menu on Click Outside
-document.addEventListener('click', (event) => {
-    const menu = document.getElementById('mobile-menu');
-    const menuBtn = document.getElementById('mobile-menu-btn');
-    
-    // Guard clause in case elements don't exist on a specific page
-    if (!menu || !menuBtn) return;
+            if (!menu.classList.contains('hidden') && 
+                !menu.contains(event.target) && 
+                !menuBtn.contains(event.target)) {
+                menu.classList.add('hidden');
+            }
+        });
 
-    // If menu is open AND click is NOT on menu AND click is NOT on button
-    if (!menu.classList.contains('hidden') && 
-        !menu.contains(event.target) && 
-        !menuBtn.contains(event.target)) {
-        menu.classList.add('hidden');
-    }
-});
+        /**
+         * FAQ Accordion Logic
+         * Adds click event listeners to all FAQ questions to toggle the 'active' class
+         */
+        document.addEventListener('DOMContentLoaded', () => {
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', () => {
+                    const faqItem = question.parentElement;
+                    
+                    // Optional: Close other open FAQs when opening a new one
+                    // document.querySelectorAll('.faq-item.active').forEach(item => {
+                    //    if (item !== faqItem) item.classList.remove('active');
+                    // });
+
+                    faqItem.classList.toggle('active');
+                });
+            });
+        });
     </script>
 </body>
 </html>
