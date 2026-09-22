@@ -25,7 +25,7 @@ const instructors = [
         name: "Oliver Emde - Flight Instructor",
         credentials: "CFI",
         photo: "assets/images/Instructors/Oliver Emde.jpg",
-        specialties: ["Private", "Single Engine Commercial"],
+        specialties: ["Private", "Single Engine Commercial", "Flight Review"],
         approvedAircraft: ["C172", "PA28"],
         bio: "Coming from a family of pilots I've always known what I wanted to do with my life. I grew up in Maui, Hawaii, where I embarked on my aviation journey at the age of 17. Flying in Maui with some of the strongest crosswinds in the world I perfected my craft. Since then, I have relocated to California to further pursue my dream. Whether you're pursuing a career or learning for fun, I am eager to share my knowledge to help you become a safe and knowledgeable pilot!",
         bookingLink: "https://oliveremde11.youcanbook.me/"
@@ -39,5 +39,15 @@ const instructors = [
         approvedAircraft: ["C172"],
         bio: "Flying is a never ending journey of experiences and learning. I started my journey at 17 and continued onto Embry Riddle Aeronautical University where I grew my foundation and got a Bachelors in Aeronautical Science. My passion for aviation pushes me to keep learning and fine tune my skills to help train safe and confident pilots. Let’s hit the skies and help you achieve your aviation goals.",
         bookingLink: "https://andrewl17.youcanbook.me/"
+    }
+
+    {
+        name: "Jonathan Shedd - Flight Instructor",
+        credentials: "CFI, CFII",
+        photo: "assets/images/Instructors/JonathanShedd.JPEG",
+        specialties: ["Private", "Instrument", "Single Engine Commercial", "Flight Review", "Instrument Proficiency Check"],
+        approvedAircraft: ["C172"],
+        bio: "Like many, becoming a pilot was something I always dreamed of doing. Starting out without a background in aviation meant navigating everything from scratch, which gave me a clear perspective on how to make training, straightforward and approachable. As an instructor, my goal is to give you the direct guidance, skills, and confidence you need to become a safe and proficient pilot. Whatever your goals are we will map out the clearest path to help you reach them.",
+        bookingLink: "https://jonathanshedd.youcanbook.me/"
     }
 ];
