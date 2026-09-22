@@ -44,7 +44,7 @@ const instructors = [
     {
         name: "Jonathan Shedd - Flight Instructor",
         credentials: "CFI, CFII",
-        photo: "assets/images/Instructors/JonathanShedd.JPEG",
+        photo: "assets/images/Instructors/JonathanS.jpeg",
         specialties: ["Private", "Instrument", "Single Engine Commercial", "Flight Review", "Instrument Proficiency Check"],
         approvedAircraft: ["C172"],
         bio: "Like many, becoming a pilot was something I always dreamed of doing. Starting out without a background in aviation meant navigating everything from scratch, which gave me a clear perspective on how to make training, straightforward and approachable. As an instructor, my goal is to give you the direct guidance, skills, and confidence you need to become a safe and proficient pilot. Whatever your goals are we will map out the clearest path to help you reach them.",
